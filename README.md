@@ -1,4 +1,5 @@
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=MarioS271&theme=tokyonight&repo=fortnite_quest_list)](https://github.com/MarioS271/fortnite_quest_list)
+# fortnite_quest_list
+A simple quest list where you can quickly input all your quests for easy access.
 
 <hr>
 <br>
