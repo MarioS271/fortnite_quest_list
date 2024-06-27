@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Create new Quest</title>
+        <link rel="stylesheet" href="https://src.marios271.net/style/prevent-user-select.css">
+        <link rel="stylesheet" href="https://src.marios271.net/style/background.css">
+        <link rel="stylesheet" href="https://src.marios271.net/style/button.css">
+    </head>
+    <body>
+    <center>
+        <br>
+        <h1>CREATE QUEST</h1>
+        <br>
+        <br>
+        <br>
+        <h2>Quest Contents</h2>
+        <textarea id="contents" rows="3" spellcheck="false"></textarea>
+        <br>
+        <br>
+        <br>
+        <h2>Quest Type</h2>
+        <select id="type">
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Story">Story</option>
+            <option value="Event">Event</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <button id="create-btn" onclick="create_quest()">Create</button>
+        <br>
+        <br>
+        <br>
+    </center>
+    <div class="background" style="left: 0px;">
+        <img src="background_2.png">
+    </div>
+    </body>
+</html>
+
+
+<script defer>
+function create_quest()
+{
+    let content = document.getElementById('contents').value;
+    let type = document.getElementById('type').value;
+
+    window.opener.add_quest(content, type);
+    window.close();
+}
+
+function update_creatable()
+{
+    if (document.getElementById('contents').value != "") 
+    { document.getElementById('create-btn').disabled = false; }
+    else 
+    { document.getElementById('create-btn').disabled = true; }
+}
+setInterval(update_creatable, 10);
+</script>
+
+
+<style>
+body
+{
+    font-family: Arial;
+    margin: 20px;
+}
+::-webkit-scrollbar { display: none; }
+textarea
+{
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 22px;
+    width: 410px;
+    scale: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+textarea:hover
+{
+    scale: 105%;
+    border-radius: 3px;
+}
+textarea:focus
+{
+    scale: 105%;
+    border-radius: 3px;
+}
+
+select
+{
+    scale: 180%;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+select:hover
+{
+    border-radius: 3px;
+}
+option
+{
+    font-size: 20px;
+}
+
+button:disabled
+{
+    background-color: #191919;
+    cursor: not-allowed;
+}
+</style>

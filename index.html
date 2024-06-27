@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fortnite Quests</title>
+        <link rel="stylesheet" href="https://src.marios271.net/style/prevent-user-select.css">
+        <link rel="stylesheet" href="https://src.marios271.net/style/background.css">
+        <link rel="stylesheet" href="https://src.marios271.net/style/button.css">
+    </head>
+    <body>
+    <header>
+        <button id="new-quest" onclick="new_quest()">New Quest</button>
+        <button id="clear-all" onclick="clear_all()">Delete all</button>
+    </header>
+
+    <center>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="quest-container"></div>
+    </center>
+
+    <div class="background" style="left: 0px; scale: 101%;">
+        <img src="background_1.png">
+    </div>
+    </body>
+</html>
+
+
+<script defer>
+const container = document.getElementById('quest-container');
+var ids = [];
+
+function clear_all()
+{
+    container.innerHTML = "";
+    ids = [];
+}
+
+function new_quest()
+{
+    window.open('popup.html', null, 'width=600,height=750,center=true,autoHideMenuBar=true,devTools=false,maximizable=false,minimizable=false,fullscreenable=false,resizable=false');
+}
+function add_quest(content, type)
+{
+    id = generate_quest_id();
+
+    const div = document.createElement('div');
+    div.id = `${id}`;
+    div.innerHTML = `
+        <h1>${type}</h1>
+        <br>
+        <br>
+        <textarea disabled="true" spellcheck="false">${content}</textarea>
+        <button class="remove-btn" onclick="remove_quest('${id}')">Remove</button>
+        <br><br><br><br><br>
+    `;
+
+    container.appendChild(div);
+}
+
+function remove_quest(id)
+{
+    document.getElementById(`${id}`).remove();
+    ids.splice(ids.indexOf(id), 1);
+}
+
+function generate_quest_id()
+{
+    let random;
+    let success = false;
+    while (!success)
+    {
+        random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+        if (!ids.includes(random))
+        {
+            ids.push(random);
+            success = true;
+        }
+    }
+    return random;
+}
+</script>
+
+
+<style>
+body
+{
+    font-family: Arial;
+    margin: 20px;
+}
+::-webkit-scrollbar { display: none; }
+textarea
+{
+    background-color: #ffffffff;
+    color: #000000;
+    padding: 10px;
+    font-family: sans-serif;
+    width: 400px;
+    scale: 295%;
+    resize: none;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+textarea:hover
+{
+    scale: 300%;
+}
+
+.remove-btn
+{
+    position: relative;
+    height: 90px;
+    bottom: 20px;
+    left: 400px;
+}
+.remove-btn:hover
+{
+    letter-spacing: normal;
+}
+
+#new-quest
+{
+    scale: 130%;
+    position: fixed;
+    left: 35px;
+}
+#clear-all
+{
+    scale: 130%;
+    position: fixed;
+    right: 35px;
+}
+</style>
