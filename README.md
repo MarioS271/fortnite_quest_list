@@ -1,7 +1,6 @@
 # fortnite_quest_list
 A simple quest list where you can quickly input all your quests for easy access.
 
-<hr>
 <br>
 
 ### Download
